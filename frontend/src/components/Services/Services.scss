@@ -1,0 +1,266 @@
+#services {
+    padding: 80px;
+    .service-container {
+        padding: 0 12px;
+        .title-section {
+            padding: 0 clamp(1rem, 10vw, 150px);
+            h2 {
+                font-size: clamp(28px, 3vw, 48px);
+                font-weight: 600;
+                line-height: 150%;
+                letter-spacing: 0;
+                text-transform: uppercase;
+                position: relative;
+                display: inline-block;
+
+                .title-main {
+                    color: var(--secondary-color);
+                }
+
+                .title-accent {
+                    color: var(--ternary-color);
+                }
+            }
+            p {
+                color: var(--para-color);
+                font-size: clamp(14px, 1.25vw, 18px);
+                font-weight: 400;
+                line-height: 150%;
+            }
+        }
+
+        .card-section {
+            .card-wrapper {
+                .card {
+                    overflow: hidden;
+                    position: relative;
+                    .card-overlay {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 0%;
+                        height: 100%;
+                        background: var(--gradient-accent-2);
+                        z-index: 0;
+                        pointer-events: none;
+                    }
+                    .items-wrapper {
+                        padding: 20px;
+                        position: relative;
+                        z-index: 1;
+                        .item-1 {
+                            position: relative;
+                            border: 6px solid var(--ternary-color);
+                            border-radius: 75px;
+                            width: 66px;
+                            height: 66px;
+                            background-color: var(--button-color-2);
+                            box-shadow: inset 10px 10px 9px 2px rgba(255, 255, 255, 0.09);
+                            overflow: hidden;
+                            padding: 32px;
+                            img {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
+                                z-index: 1;
+                            }
+
+                            .icon {
+                                width: 34px;
+                                height: 34px;
+                                path {
+                                    fill: var(--secondary-color);
+                                }
+                                &.icon-gradient path {
+                                    fill: rgb(233, 110, 21);
+                                }
+                            }
+                        }
+                        .item-2 {
+                            overflow: hidden;
+                            .card-title {
+                                font-size: clamp(18px, 1.6vw, 24px);
+                                font-weight: 600;
+                                line-height: 150%;
+                                text-transform: capitalize;
+                                letter-spacing: 0;
+                            }
+                            .card-description {
+                                font-size: clamp(13px, 1.4vw, 16px);
+                                font-weight: 400;
+                                line-height: 150%;
+                                letter-spacing: -0.5px;
+                                color: var(--para-color);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 769px) and (max-width: 998px) {
+    #services {
+        padding: 60px 40px;
+        .service-container {
+            .title-section {
+                padding: 0 clamp(24px, 5vw, 60px);
+
+                h2 {
+                    font-size: 36px;
+                    line-height: 140%;
+                }
+
+                p {
+                    font-size: clamp(15px, 1.8vw, 17px);
+                    margin-top: 12px;
+                }
+            }
+
+            .card-section {
+                .card-wrapper {
+                    .card {
+                        .items-wrapper {
+                            .item-1 {
+                                border: 5px solid var(--ternary-color);
+                                width: 60px;
+                                height: 60px;
+                                border-radius: 70px;
+
+                                .icon {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+                            }
+
+                            .item-2 {
+                                .card-title {
+                                    font-size: clamp(19px, 2vw, 22px);
+                                }
+
+                                .card-description {
+                                    font-size: clamp(13px, 1.5vw, 15px);
+                                    line-height: 155%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    #services {
+        padding: 40px 0;
+        .service-container {
+            .title-section {
+                padding: 0 clamp(20px, 4vw, 40px);
+
+                h2 {
+                    font-size: 32px;
+                    line-height: 135%;
+                }
+
+                p {
+                    font-size: clamp(14px, 2.2vw, 16px);
+                    margin-top: 10px;
+                    line-height: 160%;
+                }
+            }
+
+            .card-section {
+                padding: 0 20px;
+
+                .card-wrapper {
+                    .card {
+                        .items-wrapper {
+                            .item-1 {
+                                border: 4px solid var(--ternary-color);
+                                width: 56px;
+                                height: 56px;
+                                border-radius: 65px;
+
+                                .icon {
+                                    width: 28px;
+                                    height: 28px;
+                                }
+                            }
+
+                            .item-2 {
+                                .card-title {
+                                    font-size: clamp(17px, 2.5vw, 20px);
+                                    line-height: 140%;
+                                }
+
+                                .card-description {
+                                    font-size: clamp(13px, 1.8vw, 14px);
+                                    line-height: 160%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #services {
+        padding: 40px 0;
+        .service-container {
+            .title-section {
+                padding: 0 16px;
+
+                h2 {
+                    font-size: 28px;
+                    line-height: 130%;
+                }
+
+                p {
+                    font-size: clamp(13px, 3.5vw, 15px);
+                    margin-top: 8px;
+                    line-height: 165%;
+                }
+            }
+
+            .card-section {
+                .card-wrapper {
+                    .card {
+                        .items-wrapper {
+                            .item-1 {
+                                border: 4px solid var(--ternary-color);
+                                width: 52px;
+                                height: 52px;
+                                border-radius: 60px;
+
+                                .icon {
+                                    width: 26px;
+                                    height: 26px;
+                                }
+                            }
+
+                            .item-2 {
+                                .card-title {
+                                    font-size: clamp(16px, 4vw, 18px);
+                                    line-height: 140%;
+                                }
+
+                                .card-description {
+                                    font-size: clamp(12px, 3vw, 14px);
+                                    line-height: 165%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
