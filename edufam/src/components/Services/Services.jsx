@@ -241,7 +241,7 @@ const Services = () => {
                                 <div className="card-overlay"></div>
                                 <div className="items-wrapper flex flex-col justify-center items-center gap-10 h-full">
                                     <div className="item-1 flex justify-center items-center gap-3">
-                                        <img src="/images/services/card-layer.png" alt="" />
+                                        <img src="/images/services/card-layer.png" alt="card-layer" />
                                         <div className="icon">{service.icon}</div>
                                     </div>
                                     <div className="item-2 flex flex-col justify-start items-center text-center gap-4 min-h-[150px] md:min-h-[200px]">

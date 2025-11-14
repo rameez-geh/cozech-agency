@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cozech-agency-dz1m.vercel.app/sitemap.xml

@@ -11,7 +11,7 @@ const sora = Sora({
 export const metadata = {
     title: "COZECH - Professional Web & Mobile App Development",
     description:
-        "Transform your digital presence with COZECH. Professional web and mobile app development, modern UI/UX design, and scalable full-stack solutions for your business.",
+        "Professional web & mobile app development with modern UI/UX design. Build fast, scalable digital solutions for your business.",
     keywords: [
         "web development",
         "mobile app development",

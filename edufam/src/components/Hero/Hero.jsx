@@ -143,7 +143,7 @@ const Hero = () => {
                         <h1 ref={mainTitleRef} className="main-title">
                             We build
                         </h1>
-                        <h1 ref={rotatingRef} className="rotating-word" aria-live="polite" />
+                        <h2 ref={rotatingRef} className="rotating-word" aria-live="polite" />
 
                         <p ref={descRef}>
                             <span className="hidden md:block full-desc">

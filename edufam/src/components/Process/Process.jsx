@@ -138,7 +138,7 @@ const Process = () => {
                         >
                             {item.hasAbstractDesign && (
                                 <div className="abstract-design">
-                                    <img src="/images/process/card-layer.png" alt="" />
+                                    <img src="/images/process/card-layer.png" alt="card-layer" />
                                 </div>
                             )}
                             <div className="card flex flex-col justify-center gap-4 h-full">
