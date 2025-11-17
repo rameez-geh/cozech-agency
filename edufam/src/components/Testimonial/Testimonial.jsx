@@ -2,8 +2,11 @@
 
 import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { User } from "lucide-react";
 import "./Testimonial.scss";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const testimonialItems = [
     {
@@ -41,14 +44,63 @@ const testimonialItems = [
 ];
 
 const Testimonial = () => {
+    const sectionRef = useRef(null);
     const itemContainerRef = useRef(null);
     const animationRef = useRef(null);
+    const titleRef = useRef(null);
+    const descriptionRef = useRef(null);
+    const carouselRef = useRef(null);
+    
     const duplicatedItems = [...testimonialItems, ...testimonialItems, ...testimonialItems];
 
     useEffect(() => {
+        const section = sectionRef.current;
         const container = itemContainerRef.current;
-        if (!container) return;
+        if (!section || !container) return;
 
+        // Initial state for scroll-triggered animations
+        gsap.set(titleRef.current, { opacity: 0, y: 80 });
+        gsap.set(descriptionRef.current, { opacity: 0, y: 40 });
+        gsap.set(carouselRef.current, { opacity: 0, y: 60 });
+
+        // Scroll-triggered timeline for entrance animations
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: section,
+                start: "top 85%",
+                end: "bottom 15%",
+                toggleActions: "play none none reverse",
+            },
+        });
+
+        tl.to(titleRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+        })
+            .to(
+                descriptionRef.current,
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.6,
+                    ease: "power2.out",
+                },
+                "-=0.5"
+            )
+            .to(
+                carouselRef.current,
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.9,
+                    ease: "power2.out",
+                },
+                "-=0.3"
+            );
+
+        // Carousel animation
         const initAnimation = () => {
             if (animationRef.current) {
                 animationRef.current.kill();
@@ -82,15 +134,19 @@ const Testimonial = () => {
 
         const timeoutId = setTimeout(initAnimation, 100);
 
-        // ⭐ ADD THESE EVENTS ⭐
-        container.addEventListener("mouseenter", () => {
+        // Pause on hover
+        const handleMouseEnter = () => {
             if (animationRef.current) animationRef.current.pause();
-        });
+        };
 
-        container.addEventListener("mouseleave", () => {
+        const handleMouseLeave = () => {
             if (animationRef.current) animationRef.current.resume();
-        });
+        };
 
+        container.addEventListener("mouseenter", handleMouseEnter);
+        container.addEventListener("mouseleave", handleMouseLeave);
+
+        // Handle resize
         let resizeTimeout;
         const handleResize = () => {
             clearTimeout(resizeTimeout);
@@ -103,9 +159,9 @@ const Testimonial = () => {
             clearTimeout(timeoutId);
             clearTimeout(resizeTimeout);
             window.removeEventListener("resize", handleResize);
-
-            container.removeEventListener("mouseenter", () => {});
-            container.removeEventListener("mouseleave", () => {});
+            container.removeEventListener("mouseenter", handleMouseEnter);
+            container.removeEventListener("mouseleave", handleMouseLeave);
+            tl.kill();
 
             if (animationRef.current) {
                 animationRef.current.kill();
@@ -114,16 +170,22 @@ const Testimonial = () => {
     }, []);
 
     return (
-        <section id="testimonial" className="testimonial w-full md:min-h-screen flex flex-col items-center justify-center">
+        <section
+            ref={sectionRef}
+            id="testimonial"
+            className="testimonial w-full md:min-h-screen flex flex-col items-center justify-center"
+        >
             <div className="testimonial-container flex flex-col gap-20 justify-center items-center max-w-7xl w-full mx-auto">
                 <div className="title-section flex flex-col md:gap-4 text-center">
-                    <h2 className="title font-semibold" data-text="Results That Speak">
+                    <h2 ref={titleRef} className="title font-semibold" data-text="Results That Speak">
                         Results That <span>Speak</span>
                     </h2>
-                    <p className="description">Here's what our clients have to say about working with us.</p>
+                    <p ref={descriptionRef} className="description">
+                        Here's what our clients have to say about working with us.
+                    </p>
                 </div>
 
-                <div className="carousal-section w-full">
+                <div ref={carouselRef} className="carousal-section w-full">
                     <div className="fade-overlay fade-left"></div>
                     <div className="fade-overlay fade-right"></div>
                     <div ref={itemContainerRef} className="items-container flex items-center gap-3 md:gap-4">
