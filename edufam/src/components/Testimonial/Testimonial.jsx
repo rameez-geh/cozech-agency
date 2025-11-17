@@ -11,32 +11,32 @@ const testimonialItems = [
         logo: "/images/testimonial/edufam.svg",
         description:
             "I didn't know what features I actually needed. They explained everything patiently, didn't push unnecessary things. Felt like they understood small businesses",
-        name: "John Doe",
-        company: "Founder of Edufam",
+        name: "Musthafa",
+        company: "Co-Founder of Edufam",
     },
     {
         id: 2,
         logo: "/images/testimonial/hotel-varahi.svg",
         description:
             "I was worried about the cost going up midway. Fixed price from day one, and they kept making changes till I was satisfied. Fair deal overall.",
-        name: "Jane Smith",
-        company: "CTO at Hotel Varahi Grand",
+        name: "Ravi",
+        company: "Owner of Hotel Varahi Grand",
     },
     {
         id: 3,
         logo: "/images/testimonial/arc.svg",
         description:
             "They didn't just finish and leave. Kept working on it until it looked right. No pushback when I asked for changes. That made the difference",
-        name: "Alice Johnson",
-        company: "Creative Director, ARC",
+        name: "Muhammed Rameez",
+        company: "CEO of ARC",
     },
     {
         id: 4,
         logo: "/images/testimonial/reps-king.svg",
         description:
             "They gave me one price at the start. I paid after each part was done and approved. No confusion, no extra bills later. That's all I wanted.",
-        name: "Michael Brown",
-        company: "CEO of RepsKing",
+        name: "Abdul Razak",
+        company: "Founder of RepsKing",
     },
 ];
 
