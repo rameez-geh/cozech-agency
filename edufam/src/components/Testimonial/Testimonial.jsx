@@ -42,6 +42,7 @@ const testimonialItems = [
 
 const Testimonial = () => {
     const itemContainerRef = useRef(null);
+    const animationRef = useRef(null);
     const duplicatedItems = [...testimonialItems, ...testimonialItems, ...testimonialItems];
 
     useEffect(() => {
@@ -49,36 +50,66 @@ const Testimonial = () => {
         if (!container) return;
 
         const initAnimation = () => {
+            if (animationRef.current) {
+                animationRef.current.kill();
+            }
+
             const firstCard = container.querySelector(".card");
             if (!firstCard) return;
 
+            const containerStyles = window.getComputedStyle(container);
+            const gap = parseInt(containerStyles.gap) || 12;
+
             const cardWidth = firstCard.offsetWidth;
-            const gap = 16;
             const singleSetWidth = (cardWidth + gap) * testimonialItems.length;
 
             gsap.set(container, { x: -singleSetWidth });
 
-            const animation = gsap.to(container, {
+            animationRef.current = gsap.to(container, {
                 x: `-=${singleSetWidth}`,
                 duration: 15,
                 ease: "none",
                 repeat: -1,
+                force3D: true,
                 modifiers: {
-                    x: function (x) {
+                    x: (x) => {
                         const value = parseFloat(x);
                         return ((value + singleSetWidth) % singleSetWidth) - singleSetWidth + "px";
                     },
                 },
             });
-
-            return animation;
         };
 
         const timeoutId = setTimeout(initAnimation, 100);
 
+        // ⭐ ADD THESE EVENTS ⭐
+        container.addEventListener("mouseenter", () => {
+            if (animationRef.current) animationRef.current.pause();
+        });
+
+        container.addEventListener("mouseleave", () => {
+            if (animationRef.current) animationRef.current.resume();
+        });
+
+        let resizeTimeout;
+        const handleResize = () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(initAnimation, 150);
+        };
+
+        window.addEventListener("resize", handleResize);
+
         return () => {
             clearTimeout(timeoutId);
-            gsap.killTweensOf(container);
+            clearTimeout(resizeTimeout);
+            window.removeEventListener("resize", handleResize);
+
+            container.removeEventListener("mouseenter", () => {});
+            container.removeEventListener("mouseleave", () => {});
+
+            if (animationRef.current) {
+                animationRef.current.kill();
+            }
         };
     }, []);
 
