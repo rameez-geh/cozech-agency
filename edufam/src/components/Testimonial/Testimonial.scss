@@ -151,6 +151,8 @@
                         overflow: hidden;
                         .profile {
                             border-radius: 100px;
+                            padding: 15px;
+                            background: var(--ternary-color);
                             overflow: hidden;
                         }
                         .text-wrapper {
@@ -183,5 +185,166 @@
     }
     100% {
         background-position: 0% 50%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 998px) {
+    #testimonial {
+        padding: 60px 40px;
+
+        .testimonial-container {
+            .title-section {
+                padding: 0 clamp(24px, 5vw, 60px);
+
+                h2 {
+                    font-size: 36px;
+                    line-height: 140%;
+                }
+
+                p {
+                    font-size: clamp(15px, 1.8vw, 17px);
+                    margin-top: 12px;
+                }
+            }
+
+            .carousal-section {
+                .fade-overlay {
+                    width: 120px;
+                }
+                .items-container {
+                    .card {
+                        .item-1 {
+                            .content-wrapper {
+                                padding: 25px;
+                                min-width: 400px;
+                                height: 240px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    #testimonial {
+        padding: 40px 0;
+        .testimonial-container {
+            .title-section {
+                padding: 0 clamp(20px, 4vw, 40px);
+
+                h2 {
+                    font-size: 32px;
+                    line-height: 135%;
+                }
+
+                p {
+                    font-size: clamp(14px, 2.2vw, 16px);
+                    margin-top: 10px;
+                    line-height: 160%;
+                }
+            }
+
+            .carousal-section {
+                .fade-overlay {
+                    width: 100px;
+                }
+                .items-container {
+                    .card {
+                        .item-1 {
+                            .content-wrapper {
+                                padding: 25px;
+                                min-width: 320px;
+                                height: 220px;
+
+                                .logo {
+                                    min-height: 45px;
+                                }
+
+                                .description {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+
+                        .item-2 {
+                            .profile {
+                                padding: 10px;
+                            }
+                            .text-wrapper {
+                                .name {
+                                    font-size: 16px;
+                                }
+                                .company {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #testimonial {
+        padding: 40px 0;
+        .testimonial-container {
+            .title-section {
+                padding: 0 16px;
+
+                h2 {
+                    font-size: 28px;
+                    line-height: 130%;
+                }
+
+                p {
+                    font-size: clamp(13px, 3.5vw, 15px);
+                    margin-top: 8px;
+                    line-height: 165%;
+                }
+            }
+
+            .carousal-section {
+                .fade-overlay {
+                    width: 90px;
+                }
+                .items-container {
+                    .card {
+                        .item-1 {
+                            .content-wrapper {
+                                padding: 20px;
+                                min-width: 300px;
+                                height: 200px;
+
+                                .logo {
+                                    min-height: 40px;
+                                }
+
+                                .description {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+
+                        .item-2 {
+                            .profile {
+                                padding: 10px;
+                            }
+                            .text-wrapper {
+                                .name {
+                                    font-size: 14px;
+                                }
+                                .company {
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
