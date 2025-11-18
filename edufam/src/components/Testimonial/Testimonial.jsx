@@ -50,7 +50,7 @@ const Testimonial = () => {
     const titleRef = useRef(null);
     const descriptionRef = useRef(null);
     const carouselRef = useRef(null);
-    
+
     const duplicatedItems = [...testimonialItems, ...testimonialItems, ...testimonialItems];
 
     useEffect(() => {
@@ -58,12 +58,11 @@ const Testimonial = () => {
         const container = itemContainerRef.current;
         if (!section || !container) return;
 
-        // Initial state for scroll-triggered animations
+        // --- Entrance animations ---
         gsap.set(titleRef.current, { opacity: 0, y: 80 });
         gsap.set(descriptionRef.current, { opacity: 0, y: 40 });
         gsap.set(carouselRef.current, { opacity: 0, y: 60 });
 
-        // Scroll-triggered timeline for entrance animations
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: section,
@@ -79,42 +78,27 @@ const Testimonial = () => {
             duration: 0.8,
             ease: "power2.out",
         })
-            .to(
-                descriptionRef.current,
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.6,
-                    ease: "power2.out",
-                },
-                "-=0.5"
-            )
-            .to(
-                carouselRef.current,
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.9,
-                    ease: "power2.out",
-                },
-                "-=0.3"
-            );
+            .to(descriptionRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "-=0.5")
+            .to(carouselRef.current, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, "-=0.3");
 
-        // Carousel animation
+        // --- Carousel animation init ---
         const initAnimation = () => {
             if (animationRef.current) {
                 animationRef.current.kill();
+                animationRef.current = null;
             }
 
             const firstCard = container.querySelector(".card");
             if (!firstCard) return;
 
+            // compute gap from CSS (fallback to 12)
             const containerStyles = window.getComputedStyle(container);
             const gap = parseInt(containerStyles.gap) || 12;
 
             const cardWidth = firstCard.offsetWidth;
             const singleSetWidth = (cardWidth + gap) * testimonialItems.length;
 
+            // position container so the "middle" set is visible (works with duplicatedItems)
             gsap.set(container, { x: -singleSetWidth });
 
             animationRef.current = gsap.to(container, {
@@ -125,6 +109,7 @@ const Testimonial = () => {
                 force3D: true,
                 modifiers: {
                     x: (x) => {
+                        // keep x within [-singleSetWidth, 0)
                         const value = parseFloat(x);
                         return ((value + singleSetWidth) % singleSetWidth) - singleSetWidth + "px";
                     },
@@ -132,39 +117,150 @@ const Testimonial = () => {
             });
         };
 
-        const timeoutId = setTimeout(initAnimation, 100);
+        // small delay to ensure DOM has rendered
+        let initTimeout = setTimeout(initAnimation, 100);
 
-        // Pause on hover
-        const handleMouseEnter = () => {
-            if (animationRef.current) animationRef.current.pause();
+        // --- Pause / Resume controls ---
+        const pauseAnimation = () => {
+            if (animationRef.current && !animationRef.current.paused()) {
+                animationRef.current.pause();
+            }
+        };
+        const resumeAnimation = () => {
+            if (animationRef.current && animationRef.current.paused()) {
+                animationRef.current.resume();
+            }
         };
 
-        const handleMouseLeave = () => {
-            if (animationRef.current) animationRef.current.resume();
+        // Introduce a small resume delay to avoid resuming while user is still scrolling
+        let resumeTimeout = null;
+        const scheduleResume = (delay = 150) => {
+            clearTimeout(resumeTimeout);
+            resumeTimeout = setTimeout(() => {
+                resumeAnimation();
+                resumeTimeout = null;
+            }, delay);
+        };
+        const cancelScheduledResume = () => {
+            if (resumeTimeout) {
+                clearTimeout(resumeTimeout);
+                resumeTimeout = null;
+            }
         };
 
-        container.addEventListener("mouseenter", handleMouseEnter);
-        container.addEventListener("mouseleave", handleMouseLeave);
+        // Mouse handlers (desktop)
+        const onMouseEnter = () => {
+            cancelScheduledResume();
+            pauseAnimation();
+        };
+        const onMouseLeave = () => {
+            scheduleResume(50);
+        };
 
-        // Handle resize
+        // Pointer handlers (recommended cross-device)
+        const onPointerEnter = (e) => {
+            // pause for any pointer (mouse/touch/pen)
+            cancelScheduledResume();
+            pauseAnimation();
+        };
+        const onPointerLeave = () => {
+            scheduleResume(100);
+        };
+        const onPointerDown = () => {
+            cancelScheduledResume();
+            pauseAnimation();
+        };
+        const onPointerUp = () => {
+            // small delay to avoid interfering with scroll gestures
+            scheduleResume(120);
+        };
+        const onPointerCancel = () => {
+            scheduleResume(120);
+        };
+
+        // Touch fallback for older browsers
+        const onTouchStart = () => {
+            cancelScheduledResume();
+            pauseAnimation();
+        };
+        const onTouchEnd = () => {
+            scheduleResume(200);
+        };
+        const onTouchCancel = () => {
+            scheduleResume(200);
+        };
+
+        // Visibility change: pause when tab is hidden
+        const onVisibilityChange = () => {
+            if (document.hidden) {
+                pauseAnimation();
+            } else {
+                // resume when user returns
+                scheduleResume(100);
+            }
+        };
+
+        // Attach listeners (use pointer events where available)
+        container.addEventListener("mouseenter", onMouseEnter);
+        container.addEventListener("mouseleave", onMouseLeave);
+
+        container.addEventListener("pointerenter", onPointerEnter);
+        container.addEventListener("pointerleave", onPointerLeave);
+        container.addEventListener("pointerdown", onPointerDown);
+        container.addEventListener("pointerup", onPointerUp);
+        container.addEventListener("pointercancel", onPointerCancel);
+
+        // touch listeners: passive for touchstart so scrolling isn't blocked
+        container.addEventListener("touchstart", onTouchStart, { passive: true });
+        container.addEventListener("touchend", onTouchEnd);
+        container.addEventListener("touchcancel", onTouchCancel);
+
+        document.addEventListener("visibilitychange", onVisibilityChange);
+
+        // --- Resize handling (re-init animation after resize) ---
         let resizeTimeout;
-        const handleResize = () => {
+        const onResize = () => {
             clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(initAnimation, 150);
+            resizeTimeout = setTimeout(() => {
+                initAnimation();
+            }, 150);
         };
+        window.addEventListener("resize", onResize);
 
-        window.addEventListener("resize", handleResize);
-
+        // --- Cleanup on unmount ---
         return () => {
-            clearTimeout(timeoutId);
+            // clear timeouts
+            clearTimeout(initTimeout);
             clearTimeout(resizeTimeout);
-            window.removeEventListener("resize", handleResize);
-            container.removeEventListener("mouseenter", handleMouseEnter);
-            container.removeEventListener("mouseleave", handleMouseLeave);
-            tl.kill();
+            clearTimeout(resumeTimeout);
+            initTimeout = null;
 
+            // remove event listeners
+            container.removeEventListener("mouseenter", onMouseEnter);
+            container.removeEventListener("mouseleave", onMouseLeave);
+
+            container.removeEventListener("pointerenter", onPointerEnter);
+            container.removeEventListener("pointerleave", onPointerLeave);
+            container.removeEventListener("pointerdown", onPointerDown);
+            container.removeEventListener("pointerup", onPointerUp);
+            container.removeEventListener("pointercancel", onPointerCancel);
+
+            container.removeEventListener("touchstart", onTouchStart);
+            container.removeEventListener("touchend", onTouchEnd);
+            container.removeEventListener("touchcancel", onTouchCancel);
+
+            document.removeEventListener("visibilitychange", onVisibilityChange);
+            window.removeEventListener("resize", onResize);
+
+            // kill timelines/animations
+            try {
+                tl && tl.kill();
+            } catch (e) {}
             if (animationRef.current) {
-                animationRef.current.kill();
+                try {
+                    animationRef.current.kill();
+                } catch (e) {}
+                animationRef.current = null;
             }
         };
     }, []);
