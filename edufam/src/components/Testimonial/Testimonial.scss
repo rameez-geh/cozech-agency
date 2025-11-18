@@ -134,7 +134,7 @@
                             }
 
                             .description {
-                                color: var(--ternary-color);
+                                color: var(--ternary-color-3);
                                 font-size: 16px;
                                 font-weight: 400;
                                 line-height: 150%;
@@ -231,6 +231,7 @@
 
 @media (min-width: 481px) and (max-width: 767px) {
     #testimonial {
+        min-height: 70vh;
         padding: 40px 0;
         .testimonial-container {
             .title-section {
@@ -292,6 +293,7 @@
 
 @media (max-width: 480px) {
     #testimonial {
+        min-height: 80vh;
         padding: 40px 0;
         .testimonial-container {
             .title-section {

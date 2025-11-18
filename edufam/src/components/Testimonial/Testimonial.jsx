@@ -119,7 +119,7 @@ const Testimonial = () => {
 
             animationRef.current = gsap.to(container, {
                 x: `-=${singleSetWidth}`,
-                duration: 15,
+                duration: 24,
                 ease: "none",
                 repeat: -1,
                 force3D: true,
@@ -211,9 +211,9 @@ const Testimonial = () => {
                                     </div>
                                 </div>
                                 <div className="item-2 flex gap-2">
-                                    <div className="profile flex items-center">
+                                    {/* <div className="profile flex items-center">
                                         <User className="user-icon" size={25} />
-                                    </div>
+                                    </div> */}
                                     <div className="text-wrapper">
                                         <div className="name">{name}</div>
                                         <div className="company">{company}</div>
