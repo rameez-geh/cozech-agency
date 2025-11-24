@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 @import "tailwindcss";
 
 * {
@@ -21,6 +22,7 @@ html {
     --card-bg: #1a1a1a;
     --gradient-accent: linear-gradient(90deg, #ffd500 0%, #ff6b00 100%);
     --gradient-accent-2: linear-gradient(90deg, #ffd50044 0%, #ff6a003e 100%);
+    --jump-start-font: "Roboto Mono", monospace;
 }
 
 body {
@@ -72,9 +74,6 @@ body {
 }
 
 ::selection {
-  color: #0F0F0F;
-  background: #FFFFFF; 
+    color: #0f0f0f;
+    background: #ffffff;
 }
-
-
-
