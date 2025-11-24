@@ -252,7 +252,7 @@ const Testimonial = () => {
             document.removeEventListener("visibilitychange", onVisibilityChange);
             window.removeEventListener("resize", onResize);
 
-            // kill timelines/animations
+
             try {
                 tl && tl.kill();
             } catch (e) {}
