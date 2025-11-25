@@ -55,7 +55,7 @@ const WhoCanApply = () => {
     return (
         <section id="who-can-apply" className="who-can-apply w-full flex items-center justify-center">
             <div className="container flex flex-col gap-5 md:gap-10 justify-center items-center max-w-7xl w-full mx-auto">
-                <div className="title-section flex flex-col items-start justify-start">
+                <div className="title-section flex flex-col items-center justify-center">
                     <h2 data-text="Who Can Apply?">
                         Who <span>Can Apply?</span>
                     </h2>
@@ -63,7 +63,7 @@ const WhoCanApply = () => {
                 </div>
 
                 <div className="items-section">
-                    <div className="items-wrapper grid grid-cols-4 lg:grid-cols-8 gap-6">
+                    <div className="items-wrapper grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-6">
                         {itemsImage.map((item, index) => (
                             <div key={index} className="item flex items-center justify-center">
                                 <div className="icon-item">
