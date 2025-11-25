@@ -3,6 +3,7 @@ import Hero from "@/components/JumpStart/Hero/Hero";
 import Navbar2 from "@/components/Navbar2/Navbar2";
 import Description from "@/components/JumpStart/Description/Description";
 import WhatYouGet from "@/components/JumpStart/WhatYouGet/WhatYouGet";
+import WhyFree from "@/components/JumpStart/WhyFree/WhyFree";
 
 export const metadata = {
     title: "Jump Start - COZECH",
@@ -16,6 +17,7 @@ const JumpStartPage = () => {
             <Hero />
             <Description />
             <WhatYouGet />
+            <WhyFree />
         </>
     );
 };
