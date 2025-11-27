@@ -110,15 +110,15 @@ const WhatYouGet = () => {
                         },
                         0.3 + index * 0.1
                     )
-                    .from(
-                        card.querySelector(".card-style-item"),
-                        {
-                            rotation: -180,
-                            opacity: 0,
-                            duration: 0.6,
-                        },
-                        "-=0.3"
-                    )
+                    // .from(
+                    //     card.querySelector(".card-style-item"),
+                    //     {
+                    //         rotation: -180,
+                    //         opacity: 0,
+                    //         duration: 0.6,
+                    //     },
+                    //     "-=0.3"
+                    // )
                     .from(
                         card.querySelector(".item-2 h3"),
                         {
@@ -187,7 +187,7 @@ const WhatYouGet = () => {
                                         <div className="card-style-item">
                                             <img src={item.cardStyleItem} alt="Card Style Item" />
                                         </div>
-                                        <img src={item.logo} alt="Logo" />
+                                        <img className="card-logo" src={item.logo} alt="Logo" />
                                     </div>
                                 </div>
                                 <div className="item-2 flex flex-col gap-4 overflow-hidden">

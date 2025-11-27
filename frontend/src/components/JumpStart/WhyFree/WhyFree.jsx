@@ -91,7 +91,7 @@ const WhyFree = () => {
     return (
         <section id="why-free" ref={sectionRef} className="why-free w-full flex items-center justify-center">
             <div className="container grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 justify-center items-center max-w-7xl w-full mx-auto">
-                <div className="title-section flex flex-col items-start justify-start lg:col-span-5">
+                <div className="title-section flex flex-col items-center lg:items-start justify-start lg:col-span-5">
                     <h2 data-text="Why Free?">
                         Why <span>Free?</span>
                     </h2>

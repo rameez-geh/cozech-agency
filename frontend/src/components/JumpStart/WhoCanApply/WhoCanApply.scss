@@ -55,6 +55,7 @@
                 font-size: clamp(14px, 1.25vw, 18px);
                 font-weight: 400;
                 line-height: 150%;
+                margin-top: 8px;
             }
 
             &:hover {
@@ -65,6 +66,7 @@
                 }
             }
         }
+
         .items-section {
             padding: 20px;
             .items-wrapper {
@@ -152,6 +154,211 @@
                     color: transparent;
                     -webkit-text-fill-color: transparent;
                     position: relative;
+                }
+            }
+        }
+    }
+}
+
+// Tablet Landscape (768px - 998px)
+@media (min-width: 768px) and (max-width: 998px) {
+    #who-can-apply {
+        padding: 60px 40px;
+
+        .container {
+            padding: 0 16px;
+
+            .title-section {
+                h2 {
+                    font-size: clamp(26px, 3.5vw, 38px);
+                    line-height: 140%;
+                }
+
+                p {
+                    font-size: 15px;
+                    line-height: 155%;
+                }
+            }
+
+            .items-section {
+                padding: 16px;
+
+                .items-wrapper {
+                    gap: 12px;
+
+                    .item {
+                        border-radius: 16px;
+                        padding: 6px 16px;
+
+                        .icon-item {
+                            width: 45px;
+                            height: 45px;
+                            padding: 8px;
+
+                            .icon-image {
+                                max-width: 42px;
+                                max-height: 42px;
+                            }
+
+                            .item-name {
+                                top: -32px;
+                                font-size: 11px;
+                            }
+                        }
+
+                        &:hover {
+                            transform: translateY(-4px);
+                            box-shadow: 0 0 20px 8px rgba(160, 159, 159, 0.2);
+                        }
+                    }
+                }
+            }
+
+            .paragraph-section {
+                p {
+                    font-size: 15px;
+                    line-height: 155%;
+                }
+            }
+        }
+    }
+}
+
+// Tablet Portrait / Large Mobile (481px - 767px)
+@media (min-width: 481px) and (max-width: 767px) {
+    #who-can-apply {
+        padding: 50px 24px;
+
+        .container {
+            padding: 0 12px;
+
+            .title-section {
+                text-align: center;
+
+                h2 {
+                    font-size: clamp(24px, 4vw, 32px);
+                    line-height: 135%;
+                }
+
+                p {
+                    font-size: 14px;
+                    line-height: 160%;
+                }
+            }
+
+            .items-section {
+                padding: 14px 10px;
+
+                .items-wrapper {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 10px;
+
+                    .item {
+                        border-radius: 14px;
+                        padding: 6px 14px;
+
+                        .icon-item {
+                            width: 42px;
+                            height: 42px;
+                            padding: 7px;
+
+                            .icon-image {
+                                max-width: 38px;
+                                max-height: 38px;
+                            }
+
+                            .item-name {
+                                top: -30px;
+                                font-size: 10px;
+                                left: 50%;
+                                transform: translateX(-50%) translateY(-5px);
+
+                                &::before {
+                                    left: 50%;
+                                    border-left-width: 4px;
+                                    border-right-width: 4px;
+                                    border-top-width: 4px;
+                                }
+                            }
+                        }
+
+                        &:hover {
+                            transform: translateY(-3px);
+                            box-shadow: 0 0 18px 6px rgba(160, 159, 159, 0.18);
+                        }
+                    }
+                }
+            }
+
+            .paragraph-section {
+                text-align: center;
+
+                p {
+                    font-size: 14px;
+                    line-height: 160%;
+                }
+            }
+        }
+    }
+}
+
+// Mobile (max-width: 480px)
+@media (max-width: 480px) {
+    #who-can-apply {
+        padding: 40px 16px;
+
+        .container {
+            padding: 0 8px;
+
+            .title-section {
+                text-align: center;
+
+                h2 {
+                    font-size: 24px;
+                    line-height: 130%;
+                }
+
+                p {
+                    font-size: 13px;
+                    line-height: 165%;
+                    padding: 0 10px;
+                }
+            }
+
+            .items-section {
+                padding: 12px 5px;
+
+                .items-wrapper {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 8px;
+
+                    .item {
+                        border-radius: 12px;
+                        padding: 5px 12px;
+
+                        .icon-item {
+                            width: 38px;
+                            height: 38px;
+                            padding: 6px;
+
+                            .icon-image {
+                                max-width: 34px;
+                                max-height: 34px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .paragraph-section {
+                text-align: center;
+                padding: 0 5px;
+
+                p {
+                    font-size: 13px;
+                    line-height: 165%;
                 }
             }
         }

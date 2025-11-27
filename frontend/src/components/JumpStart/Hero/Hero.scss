@@ -176,3 +176,253 @@
         }
     }
 }
+
+@media (min-width: 768px) and (max-width: 1270px) {
+    #jump-start-hero {
+        .container {
+            .section-wrapper {
+                .title-section {
+                    .style-1 {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Tablet Landscape (768px - 998px)
+@media (min-width: 768px) and (max-width: 998px) {
+    #jump-start-hero {
+        .container {
+            .section-wrapper {
+                padding-top: 0;
+
+                .title-section {
+                    .style-1 {
+                        right: 80px;
+                        top: -10px;
+
+                        img {
+                            width: 80px;
+                            height: auto;
+                        }
+                    }
+
+                    .main-title-section {
+                        transform: translateX(0px);
+
+                        .logo {
+                            width: 100px;
+                            height: 104px;
+                        }
+
+                        .main-title-wrapper {
+                            h3 {
+                                font-size: 36px;
+                            }
+
+                            .main-title {
+                                font-size: 72px;
+
+                                .char {
+                                    -webkit-text-stroke: 2.5px var(--primary-color);
+
+                                    &::after {
+                                        left: -5px;
+                                        -webkit-text-stroke: 2.5px black;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .sub-title-section {
+                        padding: 0 20px;
+
+                        .subtitle {
+                            h4 {
+                                font-size: 28px;
+                            }
+                        }
+
+                        p {
+                            font-size: 14px;
+                            line-height: 140%;
+                        }
+                    }
+                }
+
+                .cta-section {
+                    .apply-btn {
+                        button {
+                            padding: 14px 22px;
+                            font-size: 15px;
+                        }
+                    }
+
+                    p {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Tablet Portrait / Large Mobile (481px - 767px)
+@media (min-width: 481px) and (max-width: 767px) {
+    #jump-start-hero {
+        .container {
+            .section-wrapper {
+                padding-top: 0;
+
+                .title-section {
+                    .style-1 {
+                        right: 40px;
+                        top: -15px;
+
+                        img {
+                            width: 60px;
+                            height: auto;
+                        }
+                    }
+
+                    .main-title-section {
+                        transform: translateX(0px);
+
+                        .logo {
+                            width: 80px;
+                            height: 83px;
+                        }
+
+                        .main-title-wrapper {
+                            h3 {
+                                font-size: 28px;
+                            }
+
+                            .main-title {
+                                font-size: 56px;
+
+                                .char {
+                                    -webkit-text-stroke: 2px var(--primary-color);
+
+                                    &::after {
+                                        left: -4px;
+                                        -webkit-text-stroke: 2px black;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .sub-title-section {
+                        padding: 0 15px;
+
+                        .subtitle {
+                            h4 {
+                                font-size: 22px;
+                            }
+                        }
+
+                        p {
+                            font-size: 13px;
+                            line-height: 150%;
+                        }
+                    }
+                }
+
+                .cta-section {
+                    .apply-btn {
+                        button {
+                            padding: 13px 20px;
+                            font-size: 14px;
+                        }
+                    }
+
+                    p {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Mobile (max-width: 480px)
+@media (max-width: 480px) {
+    #jump-start-hero {
+        .container {
+            padding: 0 12px;
+
+            .section-wrapper {
+                padding-top: 0;
+
+                .title-section {
+                    .main-title-section {
+                        transform: translateX(0);
+
+                        .logo {
+                            width: 65px;
+                            height: 67px;
+                        }
+
+                        .main-title-wrapper {
+                            h3 {
+                                font-size: 20px;
+                                // text-align: center;
+                            }
+
+                            .main-title {
+                                font-size: 40px;
+
+                                .char {
+                                    -webkit-text-stroke: 1.5px var(--primary-color);
+
+                                    &::after {
+                                        left: -3px;
+                                        top: 0.5px;
+                                        -webkit-text-stroke: 1.5px black;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .sub-title-section {
+                        padding: 0 10px;
+
+                        .subtitle {
+                            h4 {
+                                font-size: 18px;
+                                line-height: 120%;
+                            }
+                        }
+
+                        p {
+                            font-size: 12px;
+                            line-height: 160%;
+                        }
+                    }
+                }
+
+                .cta-section {
+                    .apply-btn {
+                        button {
+                            width: 100%;
+                            max-width: 280px;
+                            padding: 14px 20px;
+                            font-size: 14px;
+                            border-radius: 48px;
+                        }
+                    }
+
+                    p {
+                        font-size: 12px;
+                        padding: 0 10px;
+                    }
+                }
+            }
+        }
+    }
+}

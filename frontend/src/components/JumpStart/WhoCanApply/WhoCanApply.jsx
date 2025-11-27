@@ -167,7 +167,7 @@ const WhoCanApply = () => {
                     <p className="description">Smart solutions. Clear process. Lasting results.</p>
                 </div>
 
-                <div className="items-section">
+                <div className="items-section w-full lg:w-fit">
                     <div className="items-wrapper grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-8 gap-6">
                         {itemsImage.map((item, index) => (
                             <div key={index} className="item flex items-center justify-center">

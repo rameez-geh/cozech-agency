@@ -55,6 +55,7 @@
                 font-size: clamp(14px, 1.25vw, 18px);
                 font-weight: 400;
                 line-height: 150%;
+                margin-top: 8px;
             }
 
             &:hover {
@@ -149,6 +150,178 @@
         }
         100% {
             background-position: 0% 50%;
+        }
+    }
+}
+
+// Tablet Landscape (768px - 998px)
+@media (min-width: 768px) and (max-width: 998px) {
+    #why-free {
+        padding: 60px 40px;
+
+        .container {
+            padding: 0 16px;
+
+            .title-section {
+                h2 {
+                    font-size: clamp(26px, 3.5vw, 38px);
+                }
+
+                p {
+                    font-size: 15px;
+                }
+            }
+
+            .items-section {
+                padding: 0 8px;
+
+                .items-wrapper {
+                    .item {
+                        &:nth-child(1)::after,
+                        &:nth-child(2)::after {
+                            right: -20px;
+                            height: 80%;
+                        }
+
+                        .icon-item {
+                            border-radius: 65px;
+                            border-width: 5px;
+                            padding: 14px;
+                            box-shadow: inset 6px 8px 5px 1px rgba(255, 255, 255, 0.099);
+                        }
+
+                        .text-item {
+                            h5 {
+                                font-size: 16px;
+                                line-height: 145%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Tablet Portrait / Large Mobile (481px - 767px)
+@media (min-width: 481px) and (max-width: 767px) {
+    #why-free {
+        padding: 50px 24px;
+
+        .container {
+            padding: 0 12px;
+
+            .title-section {
+                text-align: center;
+
+                h2 {
+                    font-size: clamp(24px, 4vw, 32px);
+                }
+
+                p {
+                    font-size: 14px;
+                }
+            }
+
+            .items-section {
+                padding: 0 6px;
+
+                .items-wrapper {
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    gap: 30px;
+
+                    .item {
+                        // Remove vertical dividers on smaller screens
+                        &:nth-child(1)::after,
+                        &:nth-child(2)::after {
+                            display: none;
+                        }
+
+                        .icon-item {
+                            border-radius: 55px;
+                            border-width: 5px;
+                            padding: 12px;
+                            box-shadow: inset 5px 7px 4px 1px rgba(255, 255, 255, 0.099);
+                        }
+
+                        .text-item {
+                            h5 {
+                                font-size: 15px;
+                                line-height: 145%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Mobile (max-width: 480px)
+@media (max-width: 480px) {
+    #why-free {
+        padding: 40px 16px;
+
+        .container {
+            padding: 0 8px;
+
+            .title-section {
+                text-align: center;
+
+                h2 {
+                    font-size: 24px;
+                }
+
+                p {
+                    font-size: 13px;
+                    padding: 0 10px;
+                }
+            }
+
+            .items-section {
+                padding: 0;
+
+                .items-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 30px;
+
+                    .item {
+                        width: 100%;
+                        max-width: 280px;
+
+                        // Remove vertical dividers on mobile
+                        &:nth-child(1)::after,
+                        &:nth-child(2)::after {
+                            display: none;
+                        }
+
+                        // Optional: Add horizontal dividers instead
+                        &:nth-child(1),
+                        &:nth-child(2) {
+                            padding-bottom: 24px;
+                            border-bottom: 1px solid #1f1f1f;
+                        }
+
+                        .icon-item {
+                            border-radius: 50px;
+                            border-width: 4px;
+                            padding: 12px;
+                            box-shadow: inset 4px 6px 4px 1px rgba(255, 255, 255, 0.099);
+                        }
+
+                        .text-item {
+                            h5 {
+                                font-size: 14px;
+                                line-height: 150%;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

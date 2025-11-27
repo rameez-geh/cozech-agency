@@ -137,7 +137,7 @@ const Hero = () => {
             <div className="container relative z-10 w-full mx-auto h-full flex items-center justify-center">
                 <div className="section-wrapper w-full h-full flex flex-col items-center justify-center gap-10 md:gap-14">
                     <div className="title-section flex flex-col justify-center items-center gap-10 w-full">
-                        <div className="main-title-section flex items-center gap-8">
+                        <div className="main-title-section flex items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8">
                             <div className="logo">
                                 <img src="/images/jump-to-start/Hero/hero-logo.svg" alt="Hero Logo" />
                             </div>
@@ -152,7 +152,7 @@ const Hero = () => {
                             </div>
                             <p>Selected for 3 growing businesses. Fast, modern, and fully supported</p>
                         </div>
-                        <div className="style-1">
+                        <div className="style-1 hidden lg:block">
                             <img src="/images/jump-to-start/Hero/style-item-1.svg" alt="Style 1" />
                         </div>
                     </div>

@@ -19,3 +19,62 @@
         }
     }
 }
+
+// Tablet Landscape (768px - 998px)
+@media (min-width: 768px) and (max-width: 998px) {
+    #description {
+        padding: 50px 40px;
+
+        .container {
+            padding: 0 16px;
+
+            .content {
+                padding: 16px 0;
+
+                h6 {
+                    font-size: 15px;
+                    line-height: 155%;
+                }
+            }
+        }
+    }
+}
+
+// Tablet Portrait / Large Mobile (481px - 767px)
+@media (min-width: 481px) and (max-width: 767px) {
+    #description {
+        padding: 40px 24px;
+
+        .container {
+            padding: 0 12px;
+
+            .content {
+                padding: 14px 0;
+
+                h6 {
+                    font-size: 14px;
+                    line-height: 160%;
+                }
+            }
+        }
+    }
+}
+
+// Mobile (max-width: 480px)
+@media (max-width: 480px) {
+    #description {
+        padding: 20px 16px;
+
+        .container {
+            padding: 0 8px;
+
+            .content {
+                padding: 12px 0;
+
+                h6 {
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}

@@ -235,22 +235,27 @@
     }
 }
 
-@media (min-width: 769px) and (max-width: 998px) {
-    #cta {
+// Tablet Landscape (768px - 998px)
+@media (min-width: 768px) and (max-width: 998px) {
+    #jump-start-cta {
+        padding: 60px 40px;
+
         .cta-container {
-            padding: 80px 40px;
+            padding: 80px 50px;
             padding-bottom: 0;
             min-height: 60vh;
+            border-radius: 18px;
 
             .title-section {
                 .text-section {
                     .title {
-                        font-size: 36px;
+                        font-size: clamp(26px, 3.5vw, 38px);
                         line-height: 140%;
                     }
 
                     .description {
-                        font-size: clamp(15px, 1.8vw, 17px);
+                        font-size: 15px;
+                        line-height: 155%;
                         margin-top: 12px;
                     }
                 }
@@ -261,51 +266,64 @@
                     }
 
                     .buttons {
+                        gap: 12px;
+
                         .btn1,
                         .btn2 {
-                            padding: clamp(14px, 1.3vw, 16px) clamp(20px, 1.8vw, 24px);
-                            font-size: clamp(14px, 1.3vw, 15px);
+                            padding: 14px 22px;
+                            font-size: 15px;
+                            border-radius: 52px;
                         }
                     }
                 }
             }
 
             .image-section {
-                height: 280px;
+                height: 300px;
 
                 .cta-image-wrapper {
-                    width: 380px;
-                    bottom: -40px;
+                    width: 300px;
+                    bottom: -10px;
                 }
 
                 .bars {
                     height: 160px;
+                    backdrop-filter: blur(3px);
+                    -webkit-backdrop-filter: blur(3px);
                 }
             }
         }
     }
 }
 
+// Tablet Portrait / Large Mobile (481px - 767px)
 @media (min-width: 481px) and (max-width: 767px) {
-    #cta {
-        padding: 40px 0;
+    #jump-start-cta {
+        padding: 50px 24px;
+
         .cta-container {
-            padding: 60px 30px;
+            padding: 60px 35px;
             padding-bottom: 0;
             min-height: 55vh;
             border-radius: 16px;
 
+            &::before {
+                opacity: 0.4;
+            }
+
             .title-section {
+                text-align: center;
+
                 .text-section {
                     .title {
-                        font-size: 32px;
+                        font-size: clamp(24px, 4vw, 32px);
                         line-height: 135%;
                     }
 
                     .description {
-                        font-size: clamp(14px, 2.2vw, 16px);
-                        margin-top: 10px;
+                        font-size: 14px;
                         line-height: 160%;
+                        margin-top: 10px;
                     }
                 }
 
@@ -316,41 +334,47 @@
 
                     .buttons {
                         flex-direction: column;
+                        align-items: center;
                         gap: 12px;
                         width: 100%;
 
                         .btn1,
                         .btn2 {
                             width: 100%;
-                            padding: clamp(12px, 1.2vw, 14px) clamp(18px, 1.7vw, 22px);
-                            font-size: clamp(13px, 1.3vw, 14px);
+                            max-width: 300px;
+                            padding: 13px 20px;
+                            font-size: 14px;
                             border-radius: 50px;
+                            text-align: center;
                         }
                     }
                 }
             }
 
             .image-section {
-                height: 240px;
+                height: 260px;
+                width: 100%;
 
                 .cta-image-wrapper {
-                    width: 320px;
-                    bottom: -35px;
+                    width: 250px;
+                    bottom: -5px;
                 }
 
                 .bars {
                     height: 140px;
-                    backdrop-filter: blur(2px);
-                    -webkit-backdrop-filter: blur(2px);
+                    backdrop-filter: blur(2.5px);
+                    -webkit-backdrop-filter: blur(2.5px);
                 }
             }
         }
     }
 }
 
+// Mobile (max-width: 480px)
 @media (max-width: 480px) {
-    #cta {
-        padding: 40px 0;
+    #jump-start-cta {
+        padding: 40px 16px;
+
         .cta-container {
             padding: 40px 20px;
             padding-bottom: 0;
@@ -362,16 +386,19 @@
             }
 
             .title-section {
+                text-align: center;
+
                 .text-section {
                     .title {
-                        font-size: 28px;
+                        font-size: 24px;
                         line-height: 130%;
                     }
 
                     .description {
-                        font-size: clamp(13px, 3.5vw, 15px);
-                        margin-top: 8px;
+                        font-size: 13px;
                         line-height: 165%;
+                        margin-top: 8px;
+                        padding: 0 10px;
                     }
                 }
 
@@ -382,15 +409,23 @@
 
                     .buttons {
                         flex-direction: column;
+                        align-items: center;
                         gap: 10px;
                         width: 100%;
 
                         .btn1,
                         .btn2 {
                             width: 100%;
-                            padding: clamp(10px, 2.5vw, 12px) clamp(16px, 4vw, 18px);
-                            font-size: clamp(12px, 3vw, 14px);
+                            max-width: 280px;
+                            padding: 12px 18px;
+                            font-size: 13px;
                             border-radius: 48px;
+                            text-align: center;
+
+                            // Reduced hover effect for mobile
+                            &:hover {
+                                transform: translateY(-2px);
+                            }
                         }
                     }
                 }
@@ -398,17 +433,23 @@
 
             .image-section {
                 height: 200px;
+                width: 100%;
 
                 .cta-image-wrapper {
-                    width: 260px;
-                    bottom: -30px;
-                    opacity: 0.8;
+                    width: 200px;
+                    bottom: 5px;
+                    opacity: 0.85;
+
+                    .cta-bottom-image {
+                        // Slower animation on mobile for performance
+                        animation-duration: 15s;
+                    }
                 }
 
                 .bars {
-                    height: 120px;
-                    backdrop-filter: blur(1.5px);
-                    -webkit-backdrop-filter: blur(1.5px);
+                    height: 110px;
+                    backdrop-filter: blur(2px);
+                    -webkit-backdrop-filter: blur(2px);
                 }
             }
         }
