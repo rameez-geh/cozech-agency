@@ -15,34 +15,33 @@ import BotpressChatbot from "@/components/BotpressChatbot/BotpressChatbot";
 import Testimonial from "@/components/Testimonial/Testimonial";
 
 export default function Home() {
-  useEffect(() => {
+    useEffect(() => {
+        const hash = window.location.hash;
+        if (hash) {
+            const id = hash.replace("#", "");
+            const el = document.getElementById(id);
+            if (el) {
+                setTimeout(() => {
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }, 50);
+            }
+        }
+    }, []);
 
-    const hash = window.location.hash;
-    if (hash) {
-      const id = hash.replace("#", "");
-      const el = document.getElementById(id);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 50);
-      }
-    }
-  }, []); 
-
-  return (
-    <>
-      <Navbar />
-      <Hero />
-      <Process />
-      <Services />
-      <Projects />
-      <Testimonial />
-      <About />
-      <CTA />
-      <Contact />
-      <Footer />
-      <WhatsAppButton />
-      <BotpressChatbot />
-    </>
-  );
+    return (
+        <>
+            <Navbar />
+            <Hero />
+            <Process />
+            <Services />
+            <Projects />
+            <Testimonial />
+            <About />
+            <CTA />
+            <Contact />
+            <Footer />
+            <WhatsAppButton />
+            <BotpressChatbot />
+        </>
+    );
 }

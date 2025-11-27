@@ -1,15 +1,17 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import JumpstartModal from "../JumpstartModal/JumpstartModal";
 import "./Hero.scss";
 
 gsap.registerPlugin(SplitText);
 
 const Hero = () => {
     const rotatingWords = ["Websites", "Apps", "Designs", "Brands"];
+    const [isModalOpen, setIsModalOpen] = useState(true);
 
     const rotatingRef = useRef(null);
     const containerRef = useRef(null);
@@ -100,12 +102,17 @@ const Hero = () => {
 
         tlRef.current = tl;
 
+        const modalTimer = setTimeout(() => {
+            setIsModalOpen(true);
+        }, 4000);
+
         return () => {
             if (tlRef.current) {
                 tlRef.current.kill();
                 tlRef.current = null;
             }
             masterTl.kill();
+            clearTimeout(modalTimer);
         };
     }, []);
 
@@ -117,57 +124,61 @@ const Hero = () => {
     };
 
     return (
-        <section id="home" className="home relative w-full h-screen flex items-center justify-center overflow-hidden">
-            <video
-                className="absolute top-0 left-0 w-full h-full object-cover"
-                autoPlay
-                loop
-                muted
-                playsInline
-                poster="/images/hero-poster.png"
-            >
-                <source src="/videos/Hero-bg.webm" type="video/webm" />
-                <source src="/videos/Hero-bg.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+        <>
+            <section id="home" className="home relative w-full h-screen flex items-center justify-center overflow-hidden">
+                <video
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    poster="/images/hero-poster.png"
+                >
+                    <source src="/videos/Hero-bg.webm" type="video/webm" />
+                    <source src="/videos/Hero-bg.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
 
-            <div className="absolute inset-0 bg-black/50" />
-            <div className="gradient-overlay absolute inset-0 pointer-events-none" />
+                <div className="absolute inset-0 bg-black/50" />
+                <div className="gradient-overlay absolute inset-0 pointer-events-none" />
 
-            <div
-                ref={containerRef}
-                className="container relative z-10 w-full mx-auto px-4 h-full flex items-center justify-center"
-            >
-                <div className="section-wrapper w-full h-full px-2 flex flex-col items-center justify-center gap-10 md:gap-14">
-                    <div className="title-section flex flex-col justify-center items-center gap-4 w-full">
-                        <h1 ref={mainTitleRef} className="main-title">
-                            We build
-                        </h1>
-                        <h2 ref={rotatingRef} className="rotating-word" aria-live="polite" />
+                <div
+                    ref={containerRef}
+                    className="container relative z-10 w-full mx-auto px-4 h-full flex items-center justify-center"
+                >
+                    <div className="section-wrapper w-full h-full px-2 flex flex-col items-center justify-center gap-10 md:gap-14">
+                        <div className="title-section flex flex-col justify-center items-center gap-4 w-full">
+                            <h1 ref={mainTitleRef} className="main-title">
+                                We build
+                            </h1>
+                            <h2 ref={rotatingRef} className="rotating-word" aria-live="polite" />
 
-                        <p ref={descRef}>
-                            <span className="hidden md:block full-desc">
-                                We craft seamless, high-performing digital experiences that elevate brands and drive
-                                meaningful engagement. Book a free consultation to discover how we can accelerate your
-                                digital growth.
-                            </span>
-                            <span className="block md:hidden short-desc">
-                                High-performing digital experiences that elevate your brand. Book a free consultation today.
-                            </span>
-                        </p>
-                    </div>
+                            <p ref={descRef}>
+                                <span className="hidden md:block full-desc">
+                                    We craft seamless, high-performing digital experiences that elevate brands and drive
+                                    meaningful engagement. Book a free consultation to discover how we can accelerate your
+                                    digital growth.
+                                </span>
+                                <span className="block md:hidden short-desc">
+                                    High-performing digital experiences that elevate your brand. Book a free consultation
+                                    today.
+                                </span>
+                            </p>
+                        </div>
 
-                    <div ref={ctaRef} className="cta-section flex flex-col justify-center items-center gap-4">
-                        <button className="hero-btn" onClick={handleWhatsAppClick}>
-                            <span>Book a Call</span>
-                        </button>
-                        <Link href="/#process" className="hero-link transition">
-                            Too soon? <span>Keep scrolling</span>
-                        </Link>
+                        <div ref={ctaRef} className="cta-section flex flex-col justify-center items-center gap-4">
+                            <button className="hero-btn" onClick={handleWhatsAppClick}>
+                                <span>Book a Call</span>
+                            </button>
+                            <Link href="/#process" className="hero-link transition">
+                                Too soon? <span>Keep scrolling</span>
+                            </Link>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <JumpstartModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+        </>
     );
 };
 
