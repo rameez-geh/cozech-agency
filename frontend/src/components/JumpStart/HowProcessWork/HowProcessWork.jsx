@@ -125,11 +125,7 @@ const HowProcessWork = () => {
                 </div>
 
                 <div className="process-items-section w-full">
-                    <div
-                        className="items-wrapper
-                    flex flex-wrap justify-between gap-4 
-                    lg:grid lg:grid-cols-5 lg:justify-between"
-                    >
+                    <div className="items-wrapper flex flex-wrap justify-between gap-4 lg:grid lg:grid-cols-5 lg:justify-between">
                         {processItems.map((item, index) => (
                             <div
                                 key={index}

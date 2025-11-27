@@ -175,7 +175,7 @@ const WhatYouGet = () => {
                     </p>
                 </div>
 
-                <div className="card-section ">
+                <div className="card-section w-full">
                     <div className="card-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                         {cardData.map((item, index) => (
                             <div key={index} className="card flex flex-col gap-10">

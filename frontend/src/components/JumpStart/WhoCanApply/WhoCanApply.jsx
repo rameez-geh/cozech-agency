@@ -75,6 +75,13 @@ const WhoCanApply = () => {
         },
     ];
 
+    const GOOGLE_FORM_URL =
+        "https://docs.google.com/forms/d/e/1FAIpQLScrApDpKPJs6fVZuL4KZ2EZsYtEfPkoAq22UmsjnqNJe1PfWw/viewform?usp=sharing&ouid=114158827343874682983";
+
+    const handleApplyClick = () => {
+        window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+    };
+
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -181,7 +188,10 @@ const WhoCanApply = () => {
                 </div>
                 <div className="paragraph-section">
                     <p>
-                        These are examples. We work with all kinds of businesses. <span>Join the waitlist.</span>
+                        These are examples. We work with all kinds of businesses.{" "}
+                        <span className="cursor-pointer" onClick={handleApplyClick}>
+                            Join the waitlist.
+                        </span>
                     </p>
                 </div>
             </div>

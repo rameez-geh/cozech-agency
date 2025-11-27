@@ -120,6 +120,13 @@
                             text-transform: uppercase;
                             font-family: var(--jump-start-font);
                             color: var(--secondary-color);
+
+                            .highlight-free {
+                                background: var(--gradient-accent);
+                                background-clip: text;
+                                -webkit-background-clip: text;
+                                -webkit-text-fill-color: transparent;
+                            }
                         }
                     }
 

@@ -154,6 +154,14 @@
                     color: transparent;
                     -webkit-text-fill-color: transparent;
                     position: relative;
+
+                    &:hover {
+                        background: var(--gradient-accent);
+                        background-clip: text;
+                        -webkit-background-clip: text;
+                        color: transparent;
+                        -webkit-text-fill-color: transparent;
+                    }
                 }
             }
         }

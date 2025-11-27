@@ -8,6 +8,13 @@ import "./JumpStartCTA.scss";
 const JumpStartCTA = () => {
     const sectionRef = useRef(null);
 
+    const GOOGLE_FORM_URL =
+        "https://docs.google.com/forms/d/e/1FAIpQLScrApDpKPJs6fVZuL4KZ2EZsYtEfPkoAq22UmsjnqNJe1PfWw/viewform?usp=sharing&ouid=114158827343874682983";
+
+    const handleApplyClick = () => {
+        window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+    };
+
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -82,7 +89,7 @@ const JumpStartCTA = () => {
                     </div>
                     <div className="button-section flex flex-col items-center gap-4">
                         <div className="buttons flex gap-4">
-                            <button type="button" className="btn1">
+                            <button onClick={handleApplyClick} type="button" className="btn1">
                                 <span>Apply Now</span>
                             </button>
                         </div>

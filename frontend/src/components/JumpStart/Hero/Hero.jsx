@@ -8,6 +8,14 @@ import "./Hero.scss";
 
 const Hero = () => {
     const containerRef = useRef(null);
+    const freeTextRef = useRef(null);
+
+    const GOOGLE_FORM_URL =
+        "https://docs.google.com/forms/d/e/1FAIpQLScrApDpKPJs6fVZuL4KZ2EZsYtEfPkoAq22UmsjnqNJe1PfWw/viewform?usp=sharing&ouid=114158827343874682983";
+
+    const handleApplyClick = () => {
+        window.open(GOOGLE_FORM_URL, "_blank", "noopener,noreferrer");
+    };
 
     useLayoutEffect(() => {
         gsap.registerPlugin(SplitText);
@@ -116,6 +124,19 @@ const Hero = () => {
                     },
                     "-=0.5"
                 );
+
+            // Infinite waving animation for "Free" text
+            if (freeTextRef.current) {
+                gsap.to(freeTextRef.current, {
+                    rotation: 15,
+                    transformOrigin: "bottom center",
+                    duration: 0.3,
+                    ease: "power1.inOut",
+                    yoyo: true,
+                    repeat: -1,
+                    repeatDelay: 0.1,
+                });
+            }
         }, containerRef);
 
         return () => ctx.revert();
@@ -148,7 +169,12 @@ const Hero = () => {
                         </div>
                         <div className="sub-title-section flex flex-col gap-4">
                             <div className="subtitle">
-                                <h4>Build a Premium Website - Free</h4>
+                                <h4>
+                                    Build a Premium Website -{" "}
+                                    <span ref={freeTextRef} className="highlight-free" style={{ display: "inline-block" }}>
+                                        Free
+                                    </span>
+                                </h4>
                             </div>
                             <p>Selected for 3 growing businesses. Fast, modern, and fully supported</p>
                         </div>
@@ -159,7 +185,7 @@ const Hero = () => {
 
                     <div className="cta-section flex flex-col items-center gap-3">
                         <div className="apply-btn">
-                            <button className="flex items-center gap-2">
+                            <button onClick={handleApplyClick} className="flex items-center gap-2">
                                 <span>Apply now</span>
                                 <ClipboardCheck size={16} stroke="#e99132" />
                             </button>
