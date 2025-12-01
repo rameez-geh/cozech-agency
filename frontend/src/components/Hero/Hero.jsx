@@ -1,17 +1,15 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
-import JumpstartModal from "../JumpstartModal/JumpstartModal";
 import "./Hero.scss";
 
 gsap.registerPlugin(SplitText);
 
 const Hero = () => {
     const rotatingWords = ["Websites", "Apps", "Designs", "Brands"];
-    const [isModalOpen, setIsModalOpen] = useState(true);
 
     const rotatingRef = useRef(null);
     const containerRef = useRef(null);
@@ -102,17 +100,12 @@ const Hero = () => {
 
         tlRef.current = tl;
 
-        const modalTimer = setTimeout(() => {
-            setIsModalOpen(true);
-        }, 4000);
-
         return () => {
             if (tlRef.current) {
                 tlRef.current.kill();
                 tlRef.current = null;
             }
             masterTl.kill();
-            clearTimeout(modalTimer);
         };
     }, []);
 
@@ -177,7 +170,6 @@ const Hero = () => {
                     </div>
                 </div>
             </section>
-            <JumpstartModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </>
     );
 };

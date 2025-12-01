@@ -13,6 +13,7 @@ import Footer from "@/components/Footer/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
 import BotpressChatbot from "@/components/BotpressChatbot/BotpressChatbot";
 import Testimonial from "@/components/Testimonial/Testimonial";
+import HeroCarousel from "@/components/HeroCarousel/HeroCarousel";
 
 export default function Home() {
     useEffect(() => {
@@ -31,7 +32,8 @@ export default function Home() {
     return (
         <>
             <Navbar />
-            <Hero />
+            {/* <Hero /> */}
+            <HeroCarousel />
             <Process />
             <Services />
             <Projects />
