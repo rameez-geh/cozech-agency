@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://cozech.com/sitemap.xml
+Sitemap: https://www.cozech.com/sitemap.xml

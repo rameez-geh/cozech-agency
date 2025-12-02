@@ -35,14 +35,13 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-
 <!-- Vercel.json fie
 
 {
   "redirects": [
     {
       "source": "/(.*)",
-      "destination": "https://cozech.com/$1",
+      "destination": "https://www.cozech.com/$1",
       "permanent": true
     }
   ]
