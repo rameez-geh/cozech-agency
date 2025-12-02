@@ -1,0 +1,62 @@
+.hero-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-slider {
+    width: 100%;
+    height: 100%;
+
+    .swiper-wrapper {
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .swiper-slide {
+        transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform, opacity;
+    }
+}
+
+.hero-nav-arrows {
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+
+    @media (max-width: 768px) {
+        left: 16px;
+        bottom: 16px;
+    }
+}
+
+.hero-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(6px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+    color: #ea9902;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.9);
+        color: #000;
+        border-color: transparent;
+    }
+
+    @media (max-width: 768px) {
+        width: 40px;
+        height: 40px;
+    }
+}
